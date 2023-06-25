@@ -1,11 +1,11 @@
 class ItemsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-
+  
   def index
     user = User.find_by(id: params[:user_id])
     if user
       items = Item.includes(:user)
-      render json: items, include: :user
+      render json: items 
     else
       render json: { error: "User not found" }, status: :not_found
     end
