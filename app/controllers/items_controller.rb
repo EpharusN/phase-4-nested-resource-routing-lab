@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
       render json: { error: "User not found" }, status: :not_found
     end
   end
-  
+
   def show
     user = User.find(params[:user_id])
     item = user.items.find_by(id: params[:id])
@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
       render json: { error: "Item not found" }, status: :not_found
     end
   end
-  
+
   def create
     user = User.find_by(id: params[:user_id])
     if user
